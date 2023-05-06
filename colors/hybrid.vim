@@ -283,6 +283,54 @@ let s:sp_darkred    = ' guisp='. s:palette.gui.darkred[s:style]
 let s:sp_darkpurple = ' guisp='. s:palette.gui.darkpurple[s:style]
 
 "}}}
+" Terminal Highlighting: {{{
+" ----------------------------------------------------------------------------
+
+if has("nvim")
+  let g:terminal_color_0 =  s:gui_background
+  let g:terminal_color_1 =  s:palette.gui.red[s:style]
+  let g:terminal_color_2 =  s:palette.gui.green[s:style]
+  let g:terminal_color_3 =  s:palette.gui.yellow[s:style]
+  let g:terminal_color_4 =  s:palette.gui.blue[s:style]
+  let g:terminal_color_5 =  s:palette.gui.purple[s:style]
+  let g:terminal_color_6 =  s:palette.gui.aqua[s:style]
+  let g:terminal_color_7 =  s:palette.gui.foreground[s:style]
+  let g:terminal_color_8 =  "#969896"
+  let g:terminal_color_9 =  s:palette.gui.red[s:style]
+  let g:terminal_color_10 = s:palette.gui.green[s:style]
+  let g:terminal_color_11 = s:palette.gui.yellow[s:style]
+  let g:terminal_color_12 = s:palette.gui.blue[s:style]
+  let g:terminal_color_13 = s:palette.gui.purple[s:style]
+  let g:terminal_color_14 = s:palette.gui.aqua[s:style]
+  let g:terminal_color_15 = "#ffffff"
+  let g:terminal_color_background = g:terminal_color_0
+  let g:terminal_color_foreground = g:terminal_color_5
+  if &background ==# "light"
+    let g:terminal_color_background = g:terminal_color_7
+    let g:terminal_color_foreground = g:terminal_color_2
+  endif
+elseif has("terminal")
+  let g:terminal_ansi_colors = [
+    \ s:gui_background,
+    \ s:palette.gui.red[s:style],
+    \ s:palette.gui.green[s:style],
+    \ s:palette.gui.yellow[s:style],
+    \ s:palette.gui.blue[s:style],
+    \ s:palette.gui.purple[s:style],
+    \ s:palette.gui.aqua[s:style],
+    \ s:palette.gui.foreground[s:style],
+    \ "#969896",
+    \ s:palette.gui.red[s:style],
+    \ s:palette.gui.green[s:style],
+    \ s:palette.gui.yellow[s:style],
+    \ s:palette.gui.blue[s:style],
+    \ s:palette.gui.purple[s:style],
+    \ s:palette.gui.aqua[s:style],
+    \ "#ffffff",
+    \ ]
+endif
+
+"}}}
 " Vim Highlighting: (see :help highlight-groups) {{{
 " ----------------------------------------------------------------------------
 exe "hi! ColorColumn"   .s:fg_none        .s:bg_line        .s:fmt_none
