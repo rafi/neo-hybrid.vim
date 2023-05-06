@@ -1,13 +1,15 @@
-" File:       hybrid.vim
-" Maintainer: Andrew Wong (w0ng)
-" URL:        https://github.com/w0ng/vim-hybrid
-" Modified:   27 Jan 2013 07:33 AM AEST
+" File:       (neo)-hybrid.vim
+" Maintainer: Rafael Bodill (rafi)
+" URL:        https://github.com/rafi/vim-hybrid
+" Modified:   06 May 2023 23:05 PM IDT
 " License:    MIT
+" vint: -ProhibitUnnecessaryDoubleQuote
 
-" Description:"{{{
+" Description: {{{
 " ----------------------------------------------------------------------------
 " The default RGB colour palette is taken from Tomorrow-Night.vim:
-" https://github.com/chriskempson/vim-tomorrow-theme
+" https://github.com/chriskempson/base16-vim/blob/master/colors/base16-tomorrow-night.vim
+" Deprecated: https://github.com/chriskempson/vim-tomorrow-theme
 "
 " The reduced RGB colour palette is taken from Codecademy's online editor:
 " https://www.codecademy.com/learn
@@ -19,7 +21,7 @@
 " https://github.com/altercation/vim-colors-solarized
 
 "}}}
-" Requirements And Recommendations:"{{{
+" Requirements And Recommendations: {{{
 " ----------------------------------------------------------------------------
 " Requirements
 "   - gVim 7.3+ on Linux, Mac and Windows.
@@ -65,7 +67,7 @@
 "         colorscheme hybrid
 
 "}}}
-" Initialisation:"{{{
+" Initialisation: {{{
 " ----------------------------------------------------------------------------
 
 hi clear
@@ -79,7 +81,7 @@ let s:style = &background
 let g:colors_name = "hybrid"
 
 "}}}
-" GUI And Cterm Palettes:"{{{
+" GUI And Cterm Palettes: {{{
 " ----------------------------------------------------------------------------
 
 let s:palette = {'gui' : {} , 'cterm' : {}}
@@ -173,7 +175,7 @@ let s:palette.cterm.darkred    = { 'dark' : "52"               , 'light' : "189"
 let s:palette.cterm.darkpurple = { 'dark' : "53"               , 'light' : "53"  }
 
 "}}}
-" Formatting Options:"{{{
+" Formatting Options: {{{
 " ----------------------------------------------------------------------------
 let s:none   = "NONE"
 let s:t_none = "NONE"
@@ -186,7 +188,7 @@ let s:u      = ",underline"
 let s:i      = ",italic"
 
 "}}}
-" Highlighting Primitives:"{{{
+" Highlighting Primitives: {{{
 " ----------------------------------------------------------------------------
 function! s:build_prim(hi_elem, field)
   " Given a:hi_elem = bg, a:field = comment
@@ -281,7 +283,7 @@ exe "let s:sp_darkred    = ' guisp=". s:palette.gui.darkred[s:style]    ."'"
 exe "let s:sp_darkpurple = ' guisp=". s:palette.gui.darkpurple[s:style] ."'"
 
 "}}}
-" Vim Highlighting: (see :help highlight-groups)"{{{
+" Vim Highlighting: (see :help highlight-groups) {{{
 " ----------------------------------------------------------------------------
 exe "hi! ColorColumn"   .s:fg_none        .s:bg_line        .s:fmt_none
 "   Conceal"
@@ -339,7 +341,7 @@ endif
 exe "hi! Normal"        .s:fg_foreground  .s:bg_normal      .s:fmt_none
 
 "}}}
-" Generic Syntax Highlighting: (see :help group-name)"{{{
+" Generic Syntax Highlighting: (see :help group-name) {{{
 " ----------------------------------------------------------------------------
 exe "hi! Comment"         .s:fg_comment     .s:bg_none        .s:fmt_none
 
@@ -421,11 +423,12 @@ hi! link diffAdded Special
 let &background = s:style
 
 " }}}
-" Legal:"{{{
+" Legal: {{{
 " ----------------------------------------------------------------------------
 " Copyright (c) 2011 Ethan Schoonover
 " Copyright (c) 2009-2012 NanoTech
 " Copyright (c) 2012 w0ng
+" Copyright (c) 2023 Rafael Bodill
 "
 " Permission is hereby granted, free of charge, to any per‐
 " son obtaining a copy of this software and associated doc‐
@@ -451,3 +454,5 @@ let &background = s:style
 " THE SOFTWARE.
 
 " }}}
+
+" vim: set foldmethod=marker ts=2 sw=0 tw=80 et :
