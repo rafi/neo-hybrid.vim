@@ -584,6 +584,129 @@ let g:hybrid_lsp_kind_foregrounds = [
   \ ]
 
 "}}}
+" Plugins: {{{
+" ----------------------------------------------------------------------------
+
+" https://github.com/hrsh7th/nvim-cmp {{{
+exe "hi! CmpItemAbbrDeprecated" .s:fg_none       .s:bg_none  .s:fmt_stri
+exe "hi! CmpItemAbbr"           .s:fg_foreground
+exe "hi! CmpItemAbbrMatch"      .s:fg_blue       .s:bg_none  .s:fmt_none
+exe "hi! CmpItemAbbrMatchFuzzy" .s:fg_yellow     .s:bg_none  .s:fmt_none
+
+for kind in g:hybrid_lsp_kind_foregrounds
+  exe "hi! CmpItemKind" .kind[0] .kind[1] .s:bg_selection .s:fmt_none
+endfor
+
+" }}}
+" https://github.com/SmiteshP/nvim-navic {{{
+exe "hi! NavicText"      .s:fg_comment     .s:bg_status  .s:fmt_none
+exe "hi! NavicSeparator" .s:fg_status    .s:bg_status  .s:fmt_none
+for kind in g:hybrid_lsp_kind_foregrounds
+  exe "hi! NavicIcons" .kind[0] .kind[1] .s:bg_status .s:fmt_none
+endfor
+
+" }}}
+" https://github.com/stevearc/aerial.nvim {{{
+for kind in g:hybrid_lsp_kind_foregrounds
+  exe "hi! Aerial" .kind[0] ."Icon" .kind[1] .s:bg_normal .s:fmt_none
+endfor
+
+" }}}
+" https://github.com/utilyre/barbecue.nvim {{{
+for kind in g:hybrid_lsp_kind_foregrounds
+  exe "hi! barbecue_context_" .tolower(kind[0]) .kind[1] .s:bg_normal .s:fmt_none
+endfor
+
+"}}}
+" https://github.com/nvim-telescope/telescope.nvim {{{
+highlight TelescopeSelectionCaret ctermfg=139 guifg=#B294BB ctermbg=97 guibg=#4D2238
+highlight! link TelescopeSelection WildMenu
+highlight! link TelescopeNormal NormalFloat
+highlight! link TelescopeBorder FloatBorder
+highlight! link TelescopeTitle FloatTitle
+highlight! link TelescopePromptBorder FloatBorder
+highlight! link TelescopeResultsBorder FloatBorder
+highlight! link TelescopePreviewBorder FloatBorder
+highlight! link TelescopePreviewLine WildMenu
+
+"}}}
+" https://github.com/nvim-neo-tree/neo-tree.nvim {{{
+highlight NeoTreeGitAdded     guifg=#85B293
+highlight NeoTreeGitDeleted   guifg=#804152
+highlight NeoTreeGitModified  guifg=#C88D8D
+highlight NeoTreeGitUntracked guifg=#9C9D9C
+highlight NeoTreeModified     guifg=#C88D8D
+highlight NeoTreeFileNameOpened guifg=#9C9D9C
+
+"}}}
+" https://github.com/lewis6991/gitsigns.nvim {{{
+highlight GitSignsAdd ctermfg=22 guifg=#008500
+highlight GitSignsChange ctermfg=58 guifg=#808200
+highlight GitSignsDelete ctermfg=52 guifg=#800000
+
+" Word diff in previews:
+highlight GitSignsAddInline ctermbg=10 guibg=#2F5C36 guifg=#DDFFC3
+highlight GitSignsDeleteInline ctermfg=167 guifg=#cc6666 ctermbg=97 guibg=#4D2238
+highlight GitSignsChangeInline ctermbg=58 guibg=#808200
+
+"}}}
+" https://github.com/tpope/vim-fugitive {{{
+highlight! link FugitiveblameAnnotation Label
+highlight! link FugitiveblameDelimiter Comment
+highlight! link FugitiveblameTime Comment
+
+"}}}
+" https://github.com/folke/lazy.nvim {{{
+highlight LazyDimmed ctermfg=243 ctermbg=234 guifg=#8E99A3 guibg=#171B21
+highlight LazyProp ctermfg=243 ctermbg=234 guifg=#8E99A3 guibg=#171B21
+
+"}}}
+" https://github.com/simrat39/symbols-outline.nvim {{{
+highlight FocusedSymbol ctermbg=236 guibg=#2D3C42 cterm=NONE gui=NONE
+
+"}}}
+" https://github.com/chentau/marks.nvim {{{
+highlight MarkSignHL ctermfg=12 guifg=#4EA9D7
+
+"}}}
+" https://github.com/dnlhc/glance.nvim {{{
+highlight! link GlanceListMatch Visual
+highlight! link GlanceListFilepath Comment
+highlight GlanceListNormal guifg=#8b8e8c guibg=#2d2f31
+
+"}}}
+" https://github.com/kevinhwang91/nvim-bqf {{{
+highlight! link BqfPreviewBorder FloatBorder
+highlight! link BqfPreviewCursor TermCursor
+"}}}
+" https://github.com/zbirenbaum/copilot.lua {{{
+highlight! link CopilotSuggestion Identifier
+
+"}}}
+" https://github.com/andymass/vim-matchup {{{
+highlight MatchParenCur  guifg=NONE guibg=NONE    gui=NONE
+exe "hi! MatchUpPopup"   .s:fg_foreground  .s:bg_float  .' blend=30'
+
+"}}}
+" https://github.com/akinsho/bufferline.nvim {{{
+exe "hi! BufferLineBufferSelected"  .s:fg_comment .s:bg_background .s:fmt_none
+
+"}}}
+" https://github.com/b0o/incline.nvim {{{
+highlight InclineNormal ctermfg=234 ctermbg=236 guifg=#c5c8c6 guibg=#2a2e36
+highlight InclineNormalNC ctermfg=250 ctermbg=237 guifg=#757876 guibg=#2a2e36
+
+"}}}
+" https://github.com/rafi/tabstrip.nvim {{{
+hi TabLineProject  ctermfg=252 ctermbg=238 guifg=#D0D0D0 guibg=#444444
+
+"}}}
+" https://github.com/RRethy/vim-illuminate {{{
+highlight! link IlluminatedWordText LspReferenceText
+highlight! link IlluminatedWordRead LspReferenceRead
+highlight! link IlluminatedWordWrite LspReferenceWrite
+
+"}}}
 "}}}
 "
 " This is needed for some reason: {{{
