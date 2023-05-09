@@ -122,6 +122,14 @@ let s:palette.gui.darkcyan   = { 'dark' : "#005f5f"        , 'light' : "#005f00"
 let s:palette.gui.darkred    = { 'dark' : "#5f0000"        , 'light' : "#d7d7ff" }
 let s:palette.gui.darkpurple = { 'dark' : "#5f005f"        , 'light' : "#5f005f" }
 
+let s:palette.gui.float      = { 'dark' : "#171b21"        , 'light' : "#dcdcdc" }
+let s:palette.gui.statusfg   = { 'dark' : "#a8a897"        , 'light' : "#a8a897" }
+let s:palette.gui.statusbg   = { 'dark' : "#30302c"        , 'light' : "#5f5f5f" }
+let s:palette.gui.statusncfg = { 'dark' : "#666656"        , 'light' : "#666656" }
+let s:palette.gui.statusncbg = { 'dark' : "#30302c"        , 'light' : "#5f5f5f" }
+let s:palette.gui.tabline    = { 'dark' : "#767676"        , 'light' : "#a8a897" }
+let s:palette.gui.tablinesel = { 'dark' : "#626262"        , 'light' : "#93937e" }
+
 if exists("g:hybrid_custom_term_colors") && g:hybrid_custom_term_colors == 1
   let s:cterm_foreground = "15"  " White
   let s:cterm_selection  = "8"   " DarkGrey
@@ -174,6 +182,14 @@ let s:palette.cterm.darkcyan   = { 'dark' : "24"               , 'light' : "22" 
 let s:palette.cterm.darkred    = { 'dark' : "52"               , 'light' : "189" }
 let s:palette.cterm.darkpurple = { 'dark' : "53"               , 'light' : "53"  }
 
+let s:palette.cterm.float      = { 'dark' : s:cterm_selection  , 'light' : "250" }
+let s:palette.cterm.statusfg   = { 'dark' : "236"              , 'light' : "247" }
+let s:palette.cterm.statusbg   = { 'dark' : "248"              , 'light' : "59"  }
+let s:palette.cterm.statusncfg = { 'dark' : "236"              , 'light' : "247" }
+let s:palette.cterm.statusncbg = { 'dark' : "242"              , 'light' : "53"  }
+let s:palette.cterm.tabline    = { 'dark' : "243"              , 'light' : "250" }
+let s:palette.cterm.tablinesel = { 'dark' : "241"              , 'light' : "250" }
+
 "}}}
 " Formatting Options: {{{
 " ----------------------------------------------------------------------------
@@ -202,6 +218,9 @@ let s:bg_background = ' guibg='.s:gui('background').' ctermbg='.s:cterm('backgro
 let s:bg_selection  = ' guibg='.s:gui('selection') .' ctermbg='.s:cterm('selection')
 let s:bg_line       = ' guibg='.s:gui('line')      .' ctermbg='.s:cterm('line')
 let s:bg_comment    = ' guibg='.s:gui('comment')   .' ctermbg='.s:cterm('comment')
+let s:bg_float      = ' guibg='.s:gui('float')     .' ctermbg='.s:cterm('float')
+let s:bg_status     = ' guibg='.s:gui('statusbg')  .' ctermbg='.s:cterm('statusbg')
+let s:bg_statusnc   = ' guibg='.s:gui('statusncbg').' ctermbg='.s:cterm('statusncbg')
 let s:bg_red        = ' guibg='.s:gui('red')       .' ctermbg='.s:cterm('red')
 let s:bg_orange     = ' guibg='.s:gui('orange')    .' ctermbg='.s:cterm('orange')
 let s:bg_yellow     = ' guibg='.s:gui('yellow')    .' ctermbg='.s:cterm('yellow')
@@ -227,6 +246,10 @@ let s:fg_background = ' guifg='.s:gui('background').' ctermfg='.s:cterm('backgro
 let s:fg_selection  = ' guifg='.s:gui('selection') .' ctermfg='.s:cterm('selection')
 let s:fg_line       = ' guifg='.s:gui('line')      .' ctermfg='.s:cterm('line')
 let s:fg_comment    = ' guifg='.s:gui('comment')   .' ctermfg='.s:cterm('comment')
+let s:fg_status     = ' guifg='.s:gui('statusfg')  .' ctermfg='.s:cterm('statusfg')
+let s:fg_statusnc   = ' guifg='.s:gui('statusncfg').' ctermfg='.s:cterm('statusncfg')
+let s:fg_tabline    = ' guifg='.s:gui('tabline')   .' ctermfg='.s:cterm('tabline')
+let s:fg_tablinesel = ' guifg='.s:gui('tablinesel').' ctermfg='.s:cterm('tablinesel')
 let s:fg_red        = ' guifg='.s:gui('red')       .' ctermfg='.s:cterm('red')
 let s:fg_orange     = ' guifg='.s:gui('orange')    .' ctermfg='.s:cterm('orange')
 let s:fg_yellow     = ' guifg='.s:gui('yellow')    .' ctermfg='.s:cterm('yellow')
@@ -385,11 +408,11 @@ exe "hi! SpellBad"      .s:fg_none        .s:bg_none        .s:fmt_curl  .s:sp_r
 exe "hi! SpellCap"      .s:fg_none        .s:bg_none        .s:fmt_curl  .s:sp_blue
 exe "hi! SpellLocal"    .s:fg_none        .s:bg_none        .s:fmt_curl  .s:sp_aqua
 exe "hi! SpellRare"     .s:fg_none        .s:bg_none        .s:fmt_curl  .s:sp_purple
-exe "hi! StatusLine"    .s:fg_comment     .s:bg_background  .s:fmt_revr
-exe "hi! StatusLineNC"  .s:fg_window      .s:bg_comment     .s:fmt_revr
-exe "hi! TabLine"       .s:fg_foreground  .s:bg_darkcolumn  .s:fmt_revr
-"   TabLineFill"
-"   TabLineSel"
+exe "hi! StatusLine"    .s:fg_status      .s:bg_status      .s:fmt_none
+exe "hi! StatusLineNC"  .s:fg_statusnc    .s:bg_statusnc    .s:fmt_none
+exe "hi! TabLine"       .s:fg_tabline     .s:bg_window      .s:fmt_none
+exe "hi! TabLineFill"   .s:fg_darkcolumn  .s:bg_window      .s:fmt_none
+exe "hi! TabLineSel"    .s:fg_tablinesel  .s:bg_darkcolumn  .s:fmt_none
 exe "hi! Title"         .s:fg_yellow      .s:bg_none        .s:fmt_none
 exe "hi! Visual"        .s:fg_none        .s:bg_selection   .s:fmt_none
 " VisualNOS
