@@ -177,15 +177,13 @@ let s:palette.cterm.darkpurple = { 'dark' : "53"               , 'light' : "53" 
 "}}}
 " Formatting Options: {{{
 " ----------------------------------------------------------------------------
-let s:none   = "NONE"
-let s:t_none = "NONE"
-let s:n      = "NONE"
-let s:c      = ",undercurl"
-let s:r      = ",reverse"
-let s:s      = ",standout"
-let s:b      = ",bold"
-let s:u      = ",underline"
-let s:i      = ",italic"
+let s:c = ",undercurl"
+let s:r = ",reverse"
+let s:s = ",standout"
+let s:b = ",bold"
+let s:u = ",underline"
+let s:i = ",italic"
+let s:t = ",strikethrough"
 
 "}}}
 " Highlighting Primitives: {{{
@@ -258,6 +256,7 @@ let s:fmt_ital = ' gui=NONE'.s:i.      ' cterm=NONE'.s:i.      ' term=NONE'.s:i
 let s:fmt_stnd = ' gui=NONE'.s:s.      ' cterm=NONE'.s:s.      ' term=NONE'.s:s
 let s:fmt_revr = ' gui=NONE'.s:r.      ' cterm=NONE'.s:r.      ' term=NONE'.s:r
 let s:fmt_revb = ' gui=NONE'.s:r.s:b.  ' cterm=NONE'.s:r.s:b.  ' term=NONE'.s:r.s:b
+let s:fmt_stri = ' gui=NONE'.s:t.      ' cterm=NONE'.s:t.      ' term=NONE'.s:t
 
 let s:sp_none       = ' guisp=NONE'
 let s:sp_foreground = ' guisp='. s:palette.gui.foreground[s:style]
@@ -335,7 +334,9 @@ endif
 " ----------------------------------------------------------------------------
 exe "hi! ColorColumn"   .s:fg_none        .s:bg_line        .s:fmt_none
 "   Conceal"
+highlight! link CurSearch IncSearch
 "   Cursor"
+"   lCursor"
 "   CursorIM"
 exe "hi! CursorColumn"  .s:fg_none        .s:bg_line        .s:fmt_none
 exe "hi! CursorLine"    .s:fg_none        .s:bg_line        .s:fmt_none
@@ -344,29 +345,46 @@ exe "hi! DiffAdd"       .s:fg_addfg       .s:bg_addbg       .s:fmt_none
 exe "hi! DiffChange"    .s:fg_changefg    .s:bg_changebg    .s:fmt_none
 exe "hi! DiffDelete"    .s:fg_background  .s:bg_delbg       .s:fmt_none
 exe "hi! DiffText"      .s:fg_background  .s:bg_blue        .s:fmt_none
-exe "hi! ErrorMsg"      .s:fg_background  .s:bg_red         .s:fmt_stnd
-exe "hi! VertSplit"     .s:fg_window      .s:bg_none        .s:fmt_none
+exe "hi! EndOfBuffer"   .s:fg_selection   .s:bg_none        .s:fmt_none
+exe "hi! TermCursor"    .s:fg_none        .s:bg_blue        .s:fmt_none
+exe "hi! TermCursorNC"  .s:fg_none        .s:bg_selection   .s:fmt_none
+exe "hi! ErrorMsg"      .s:fg_red         .s:bg_none        .s:fmt_none
+exe "hi! WinSeparator"  .s:fg_window      .s:bg_none        .s:fmt_none
 exe "hi! Folded"        .s:fg_comment     .s:bg_darkcolumn  .s:fmt_none
-exe "hi! FoldColumn"    .s:fg_none        .s:bg_darkcolumn  .s:fmt_none
+exe "hi! FoldColumn"    .s:fg_comment     .s:bg_none        .s:fmt_none
 exe "hi! SignColumn"    .s:fg_none        .s:bg_darkcolumn  .s:fmt_none
-"   Incsearch"
+exe "hi! IncSearch"     .s:fg_background  .s:bg_green       .s:fmt_none
+" Substitute
 exe "hi! LineNr"        .s:fg_selection   .s:bg_none        .s:fmt_none
+" LineNrAbove
+" LineNrBelow
 exe "hi! CursorLineNr"  .s:fg_yellow      .s:bg_none        .s:fmt_none
-exe "hi! MatchParen"    .s:fg_background  .s:bg_changebg    .s:fmt_none
+" CursorLineFold
+" CursorLineSign
+exe "hi! MatchParen"    .s:fg_none        .s:bg_selection   .s:fmt_none
 exe "hi! ModeMsg"       .s:fg_green       .s:bg_none        .s:fmt_none
+" MsgSeparator
 exe "hi! MoreMsg"       .s:fg_green       .s:bg_none        .s:fmt_none
 exe "hi! NonText"       .s:fg_selection   .s:bg_none        .s:fmt_none
+exe "hi! NormalFloat"   .s:fg_foreground  .s:bg_float       .s:fmt_none
+exe "hi! FloatBorder"   .s:fg_comment     .s:bg_float       .s:fmt_none
+exe "hi! FloatTitle"    .s:fg_yellow      .s:bg_none        .s:fmt_none
 exe "hi! Pmenu"         .s:fg_foreground  .s:bg_selection   .s:fmt_none
 exe "hi! PmenuSel"      .s:fg_foreground  .s:bg_selection   .s:fmt_revr
-"   PmenuSbar"
-"   PmenuThumb"
+" PmenuKind
+" PmenuKindSel
+" PmenuExtra
+" PmenuExtraSel
+exe "hi! PmenuSbar"     .s:bg_status
+exe "hi! PmenuThumb"    .s:bg_comment
 exe "hi! Question"      .s:fg_green       .s:bg_none        .s:fmt_none
+hi! link QuickFixLine WildMenu
 exe "hi! Search"        .s:fg_background  .s:bg_yellow      .s:fmt_none
 exe "hi! SpecialKey"    .s:fg_selection   .s:bg_none        .s:fmt_none
-exe "hi! SpellCap"      .s:fg_blue        .s:bg_darkblue    .s:fmt_undr
-exe "hi! SpellLocal"    .s:fg_aqua        .s:bg_darkcyan    .s:fmt_undr
-exe "hi! SpellBad"      .s:fg_red         .s:bg_darkred     .s:fmt_undr
-exe "hi! SpellRare"     .s:fg_purple      .s:bg_darkpurple  .s:fmt_undr
+exe "hi! SpellBad"      .s:fg_none        .s:bg_none        .s:fmt_curl  .s:sp_red
+exe "hi! SpellCap"      .s:fg_none        .s:bg_none        .s:fmt_curl  .s:sp_blue
+exe "hi! SpellLocal"    .s:fg_none        .s:bg_none        .s:fmt_curl  .s:sp_aqua
+exe "hi! SpellRare"     .s:fg_none        .s:bg_none        .s:fmt_curl  .s:sp_purple
 exe "hi! StatusLine"    .s:fg_comment     .s:bg_background  .s:fmt_revr
 exe "hi! StatusLineNC"  .s:fg_window      .s:bg_comment     .s:fmt_revr
 exe "hi! TabLine"       .s:fg_foreground  .s:bg_darkcolumn  .s:fmt_revr
@@ -374,11 +392,12 @@ exe "hi! TabLine"       .s:fg_foreground  .s:bg_darkcolumn  .s:fmt_revr
 "   TabLineSel"
 exe "hi! Title"         .s:fg_yellow      .s:bg_none        .s:fmt_none
 exe "hi! Visual"        .s:fg_none        .s:bg_selection   .s:fmt_none
-"   VisualNos"
-exe "hi! WarningMsg"    .s:fg_red         .s:bg_none        .s:fmt_none
-" FIXME LongLineWarning to use variables instead of hardcoding
-hi LongLineWarning  guifg=NONE        guibg=#371F1C     gui=underline ctermfg=NONE        ctermbg=NONE        cterm=underline
-"   WildMenu"
+" VisualNOS
+exe "hi! WarningMsg"    .s:fg_yellow      .s:bg_none        .s:fmt_none
+" Whitespace
+exe "hi! WildMenu"      .s:fg_none        .s:bg_darkpurple  .s:fmt_none
+hi! link WinBar StatusLine
+hi! link WinBarNC StatusLineNC
 
 " Use defined custom background colour for terminal Vim.
 if !has('gui_running') && exists("g:hybrid_custom_term_colors") && g:hybrid_custom_term_colors == 1
@@ -433,7 +452,7 @@ exe "hi! Underlined"      .s:fg_blue        .s:bg_none        .s:fmt_none
 
 exe "hi! Ignore"          .s:fg_none        .s:bg_none        .s:fmt_none
 
-exe "hi! Error"           .s:fg_red         .s:bg_darkred     .s:fmt_undr
+exe "hi! Error"           .s:fg_red         .s:bg_none        .s:fmt_none
 
 exe "hi! Todo"            .s:fg_addfg       .s:bg_none        .s:fmt_none
 
