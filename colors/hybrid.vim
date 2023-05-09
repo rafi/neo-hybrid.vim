@@ -463,7 +463,20 @@ exe "hi! qfLineNr"        .s:fg_yellow      .s:bg_none        .s:fmt_none
 "   qfError"
 
 "}}}
-" Diff Syntax Highlighting:"{{{
+" Diagnostics: {{{
+" ----------------------------------------------------------------------------
+exe "hi! DiagnosticError"  .s:fg_red        .s:bg_none        .s:fmt_none
+exe "hi! DiagnosticWarn"   .s:fg_yellow     .s:bg_none        .s:fmt_none
+exe "hi! DiagnosticInfo"   .s:fg_aqua       .s:bg_none        .s:fmt_none
+exe "hi! DiagnosticHint"   .s:fg_blue       .s:bg_none        .s:fmt_none
+exe "hi! DiagnosticOk"     .s:fg_green      .s:bg_none        .s:fmt_none
+
+exe "hi! DiagnosticUnderlineHint" .s:fmt_undi .s:sp_comment
+exe "hi! DiagnosticDeprecated"    .s:fmt_stri .s:sp_red
+hi! link DiagnosticUnnecessary Comment
+
+"}}}
+" Diff Syntax Highlighting: {{{
 " ----------------------------------------------------------------------------
 " Diff
 "   diffOldFile
@@ -483,6 +496,94 @@ hi! link diffAdded Special
 "   diffSubname
 "   diffComment
 
+"}}}
+" LSP: {{{
+" ----------------------------------------------------------------------------
+
+" highlight! link lspReference Visual
+highlight LspReferenceRead ctermbg=237 guibg=#3D3741
+highlight LspReferenceText ctermbg=237 guibg=#373B41
+highlight LspReferenceWrite ctermbg=237 guibg=#374137
+highlight LspSignatureActiveParameter ctermbg=237 guibg=#4D2238
+highlight LspCodeLens ctermfg=7 guifg=#5F5F5F
+highlight LspCodeLensSeparator ctermbg=8 guibg=#1C1C1C
+
+" Lsp Semantic Tokens type highlights
+" See https://neovim.io/doc/user/lsp.html#lsp-semantic-highlight
+highlight! link @lsp.type.comment @comment
+highlight! link @lsp.type.class @structure
+highlight! link @lsp.type.decorator @function
+highlight! link @lsp.type.enum @type
+highlight! link @lsp.type.enumMember @constant
+highlight! link @lsp.type.escapeSequence @string.escape
+highlight! link @lsp.type.formatSpecifier @punctuation.special
+highlight! link @lsp.type.interface @interface
+highlight! link @lsp.type.keyword @keyword
+highlight! link @lsp.type.macro @macro
+highlight! link @lsp.type.method @method
+highlight! link @lsp.type.namespace @namespace
+highlight! link @lsp.type.operator @operator
+highlight! link @lsp.type.parameter @parameter
+highlight! link @lsp.type.property @property
+highlight! link @lsp.type.selfKeyword @variable.builtin
+
+highlight! link @tag Statement
+highlight! link @tag.delimiter Special
+highlight! link @tag.attribute Identifier
+
+highlight! link @lsp.typemod.enum.defaultLibrary @type.builtin
+highlight! link @lsp.typemod.enumMember.defaultLibrary @constant.builtin
+highlight! link @lsp.typemod.function.defaultLibrary @function.builtin
+highlight! link @lsp.typemod.keyword.async @keyword.coroutine
+highlight! link @lsp.typemod.macro.defaultLibrary @function.builtin
+highlight! link @lsp.typemod.method.defaultLibrary @function.builtin
+highlight! link @lsp.typemod.operator.injected @operator
+highlight! link @lsp.typemod.string.injected @string
+highlight! link @lsp.typemod.type.defaultLibrary @type.builtin
+highlight! link @lsp.typemod.variable.declaration.lua @variable
+highlight! link @lsp.typemod.variable.defaultLibrary @variable.builtin
+highlight! link @lsp.typemod.variable.injected @variable
+
+" Define a color for each LSP item kind to create highlights for plugins.
+let g:hybrid_lsp_kind_foregrounds = [
+  \ [ 'Array', s:fg_yellow ],
+  \ [ 'Boolean', s:fg_yellow ],
+  \ [ 'Class', s:fg_blue ],
+  \ [ 'Color', s:fg_yellow ],
+  \ [ 'Constant', s:fg_orange ],
+  \ [ 'Constructor', s:fg_green ],
+  \ [ 'Default', s:fg_blue ],
+  \ [ 'Enum', s:fg_blue ],
+  \ [ 'EnumMember', s:fg_purple ],
+  \ [ 'Event', s:fg_yellow ],
+  \ [ 'Field', s:fg_green ],
+  \ [ 'File', s:fg_green ],
+  \ [ 'Folder', s:fg_yellow ],
+  \ [ 'Function', s:fg_blue ],
+  \ [ 'Interface', s:fg_blue ],
+  \ [ 'Key', s:fg_red ],
+  \ [ 'Keyword', s:fg_red ],
+  \ [ 'Method', s:fg_green ],
+  \ [ 'Module', s:fg_blue ],
+  \ [ 'Namespace', s:fg_red ],
+  \ [ 'Null', s:fg_yellow ],
+  \ [ 'Number', s:fg_yellow ],
+  \ [ 'Object', s:fg_purple ],
+  \ [ 'Operator', s:fg_green ],
+  \ [ 'Package', s:fg_red ],
+  \ [ 'Property', s:fg_orange ],
+  \ [ 'Reference', s:fg_yellow ],
+  \ [ 'Snippet', s:fg_yellow ],
+  \ [ 'String', s:fg_yellow ],
+  \ [ 'Struct', s:fg_blue ],
+  \ [ 'Text', s:fg_foreground ],
+  \ [ 'TypeParameter', s:fg_blue ],
+  \ [ 'Unit', s:fg_purple ],
+  \ [ 'Value', s:fg_purple ],
+  \ [ 'Variable', s:fg_orange ],
+  \ ]
+
+"}}}
 "}}}
 "
 " This is needed for some reason: {{{
