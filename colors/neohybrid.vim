@@ -64,7 +64,7 @@
 "
 "         let g:hybrid_custom_term_colors = 1
 "         let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-"         colorscheme hybrid
+"         colorscheme neohybrid
 
 "}}}
 " Initialisation: {{{
@@ -78,7 +78,7 @@ endif
 
 let s:style = &background
 
-let g:colors_name = "hybrid"
+let g:colors_name = "neohybrid"
 
 "}}}
 " GUI And Cterm Palettes: {{{
@@ -568,7 +568,7 @@ highlight! link @lsp.typemod.variable.defaultLibrary @variable.builtin
 highlight! link @lsp.typemod.variable.injected @variable
 
 " Define a color for each LSP item kind to create highlights for plugins.
-let g:hybrid_lsp_kind_foregrounds = [
+let s:hybrid_lsp_kind_foregrounds = [
   \ [ 'Array', s:fg_yellow ],
   \ [ 'Boolean', s:fg_yellow ],
   \ [ 'Class', s:fg_blue ],
@@ -616,7 +616,7 @@ exe "hi! CmpItemAbbr"           .s:fg_foreground
 exe "hi! CmpItemAbbrMatch"      .s:fg_blue       .s:bg_none  .s:fmt_none
 exe "hi! CmpItemAbbrMatchFuzzy" .s:fg_yellow     .s:bg_none  .s:fmt_none
 
-for kind in g:hybrid_lsp_kind_foregrounds
+for kind in s:hybrid_lsp_kind_foregrounds
   exe "hi! CmpItemKind" .kind[0] .kind[1] .s:bg_selection .s:fmt_none
 endfor
 
@@ -624,19 +624,19 @@ endfor
 " https://github.com/SmiteshP/nvim-navic {{{
 exe "hi! NavicText"      .s:fg_comment     .s:bg_status  .s:fmt_none
 exe "hi! NavicSeparator" .s:fg_status    .s:bg_status  .s:fmt_none
-for kind in g:hybrid_lsp_kind_foregrounds
+for kind in s:hybrid_lsp_kind_foregrounds
   exe "hi! NavicIcons" .kind[0] .kind[1] .s:bg_status .s:fmt_none
 endfor
 
 " }}}
 " https://github.com/stevearc/aerial.nvim {{{
-for kind in g:hybrid_lsp_kind_foregrounds
+for kind in s:hybrid_lsp_kind_foregrounds
   exe "hi! Aerial" .kind[0] ."Icon" .kind[1] .s:bg_normal .s:fmt_none
 endfor
 
 " }}}
 " https://github.com/utilyre/barbecue.nvim {{{
-for kind in g:hybrid_lsp_kind_foregrounds
+for kind in s:hybrid_lsp_kind_foregrounds
   exe "hi! barbecue_context_" .tolower(kind[0]) .kind[1] .s:bg_normal .s:fmt_none
 endfor
 
