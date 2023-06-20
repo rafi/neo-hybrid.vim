@@ -530,6 +530,7 @@ highlight LspReferenceWrite ctermbg=237 guibg=#374137
 highlight LspSignatureActiveParameter ctermbg=237 guibg=#4D2238
 highlight LspCodeLens ctermfg=7 guifg=#5F5F5F
 highlight LspCodeLensSeparator ctermbg=8 guibg=#1C1C1C
+highlight! link LspInlayHint Comment
 
 " Lsp Semantic Tokens type highlights
 " See https://neovim.io/doc/user/lsp.html#lsp-semantic-highlight
@@ -615,6 +616,7 @@ exe "hi! CmpItemAbbrDeprecated" .s:fg_none       .s:bg_none  .s:fmt_stri
 exe "hi! CmpItemAbbr"           .s:fg_foreground
 exe "hi! CmpItemAbbrMatch"      .s:fg_blue       .s:bg_none  .s:fmt_none
 exe "hi! CmpItemAbbrMatchFuzzy" .s:fg_yellow     .s:bg_none  .s:fmt_none
+highlight! link CmpGhostText Comment
 
 for kind in s:hybrid_lsp_kind_foregrounds
   exe "hi! CmpItemKind" .kind[0] .kind[1] .s:bg_selection .s:fmt_none
