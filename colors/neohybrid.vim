@@ -120,7 +120,7 @@ let s:palette.gui.delbg      = { 'dark' : "#cc6666"        , 'light' : "#ffd7d7"
 let s:palette.gui.darkblue   = { 'dark' : "#00005f"        , 'light' : "#d7ffd7" }
 let s:palette.gui.darkcyan   = { 'dark' : "#005f5f"        , 'light' : "#005f00" }
 let s:palette.gui.darkred    = { 'dark' : "#5f0000"        , 'light' : "#d7d7ff" }
-let s:palette.gui.darkpurple = { 'dark' : "#5f005f"        , 'light' : "#5f005f" }
+let s:palette.gui.darkpurple = { 'dark' : "#4d2238"        , 'light' : "#5f005f" }
 
 let s:palette.gui.float      = { 'dark' : "#171b21"        , 'light' : "#dcdcdc" }
 let s:palette.gui.statusfg   = { 'dark' : "#a8a897"        , 'light' : "#a8a897" }
@@ -180,7 +180,7 @@ let s:palette.cterm.delbg      = { 'dark' : s:cterm_delbg      , 'light' : "224"
 let s:palette.cterm.darkblue   = { 'dark' : "17"               , 'light' : "194" }
 let s:palette.cterm.darkcyan   = { 'dark' : "24"               , 'light' : "22"  }
 let s:palette.cterm.darkred    = { 'dark' : "52"               , 'light' : "189" }
-let s:palette.cterm.darkpurple = { 'dark' : "53"               , 'light' : "53"  }
+let s:palette.cterm.darkpurple = { 'dark' : "97"               , 'light' : "53"  }
 
 let s:palette.cterm.float      = { 'dark' : s:cterm_selection  , 'light' : "250" }
 let s:palette.cterm.statusfg   = { 'dark' : "236"              , 'light' : "247" }
