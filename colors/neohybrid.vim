@@ -502,9 +502,9 @@ hi! link DiagnosticUnnecessary Comment
 " Diff Syntax Highlighting: {{{
 " ----------------------------------------------------------------------------
 " Diff
-"   diffOldFile
-"   diffNewFile
-"   diffFile
+exe "hi! diffOldFile"  .s:fg_yellow   .s:bg_none       .s:fmt_none
+exe "hi! diffNewFile"  .s:fg_orange   .s:bg_none       .s:fmt_none
+exe "hi! diffFile"     .s:fg_blue     .s:bg_none       .s:fmt_none
 "   diffOnly
 "   diffIdentical
 "   diffDiffer
@@ -512,10 +512,11 @@ hi! link DiagnosticUnnecessary Comment
 "   diffIsA
 "   diffNoEOL
 "   diffCommon
-hi! link diffRemoved Constant
-"   diffChanged
-hi! link diffAdded Special
+exe "hi! diffAdded"    .s:fg_green    .s:bg_none       .s:fmt_none
+exe "hi! diffRemoved"  .s:fg_red      .s:bg_none       .s:fmt_none
+exe "hi! diffChanged"  .s:fg_blue     .s:bg_none       .s:fmt_none
 "   diffLine
+"   diffIndexLine
 "   diffSubname
 "   diffComment
 
