@@ -1,10 +1,10 @@
 # neo-hybrid.vim
 
-Forked from [github.com/w0ng/vim-hybrid](https://github.com/w0ng/vim-hybrid),
-improved with missing vim and terminal highlights, neovim lsp and diagnostics,
-semantic highlights, and many popular plugins support.
+Forked from [w0ng/vim-hybrid](https://github.com/w0ng/vim-hybrid), improved with
+missing Vim and terminal highlights, Neovim LSP and diagnostics, semantic
+highlights, and many popular plugins support.
 
-A dark colour scheme for Vim that combines the:
+The original hybrid theme by w0ng combines the:
 
 - Default palette from [Tomorrow-Night](https://github.com/chriskempson/vim-tomorrow-theme).
 - Reduced contrast palette from [Codecademy](https://www.codecademy.com)'s
@@ -14,13 +14,15 @@ A dark colour scheme for Vim that combines the:
 
 ## Updates
 
-- 10/05/2023: Renamed colorscheme to `neohybrid`.
-- 09/05/2023: Added missing vim and terminal highlights, neovim lsp and diagnostics,
+- 2023-06-20: Add LspInlayHint and CmpGhostText. Change darkpurple color and
+  define diff highlights.
+- 2023-05-10: Renamed colorscheme to `neohybrid`.
+- 2023-05-09: Add missing vim and terminal highlights, neovim lsp and diagnostics,
   semantic highlights, and many popular plugins support.
-- 06/05/2023: Added Terminal highlights.
-- 05/01/2016: Replaced `let g:hybrid_use_Xresources = 1` in favour of __`let
-  g:hybrid_custom_term_colors = 1`__
-- 05/01/2016: Added `let g:hybrid_reduced_contrast = 1`
+- 2023-05-06: Add Terminal highlights.
+- 2016-01-05: Replace `let g:hybrid_use_Xresources = 1` in favour of
+  `let g:hybrid_custom_term_colors = 1`
+- 2016-01-05: Add `let g:hybrid_reduced_contrast = 1`
 
 ## Requirements
 
@@ -28,13 +30,9 @@ A dark colour scheme for Vim that combines the:
 
 ## Installation
 
-1. Copy `colors/neohybrid.vim` to:
+1. Copy `colors/neohybrid.vim` locally to `~/.config/nvim/colors/neohybrid.vim`
 
-   ```
-   ~/.config/nvim/colors/neohybrid.vim
-   ```
-
-   Or alternatively, use your favorite package-manager:
+   or alternatively, use your favorite package-manager:
 
    <details>
    <summary>With <a href="https://github.com/folke/lazy.nvim">lazy.nvim</a></summary>
